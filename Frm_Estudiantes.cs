@@ -15,7 +15,7 @@ namespace PG02_LAB09_MOSQUITO_LUIS
     public partial class Frm_Estudiantes : Form
     {
         ArrayList aEstudiante = new ArrayList();
-        
+        clsestudiante objEstudiante = new clsestudiante();
 
         public Frm_Estudiantes()
         {
@@ -31,9 +31,17 @@ namespace PG02_LAB09_MOSQUITO_LUIS
             btneliminar.Enabled = false;
         }
 
+        private void mtdPermitirBotones(bool a,bool b, bool c, bool d, bool e)
+        {
+            btnnuevo.Enabled = a;
+            btnguardar.Enabled = b;
+            btnmodificar.Enabled = c;
+            btneliminar.Enabled= d;
+            btnsalir.Enabled = e;
+        }
+
         private void mTdLimpiarControles()
         {
-            //txtcodigo.Clear();
             txtnombre.Clear();
             txtapellido.Clear();
             txtnumero.Clear();
@@ -78,21 +86,42 @@ namespace PG02_LAB09_MOSQUITO_LUIS
             txtnumero.Enabled = true;
             txtemail.Enabled = true;
 
-            btnguardar.Enabled = true;
-            btnmodificar.Enabled = true;
-            btneliminar.Enabled = true;
-
+            mtdPermitirBotones(false,true,false,false,true);
             mTdLimpiarControles();
         }
 
         private void btnguardar_Click(object sender, EventArgs e)
         {
-            clsestudiante objEstudiante = new clsestudiante();
             try
             {
-                if (txtnombre.Text == string.Empty)
+                if (string.IsNullOrEmpty(txtnombre.Text) && string.IsNullOrEmpty(txtapellido.Text) && string.IsNullOrEmpty(txtnumero.Text) && string.IsNullOrEmpty(txtemail.Text))
+                {
+                    MessageBox.Show("Todo los campos estan vacios");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(txtnombre.Text))
                 {
                     MessageBox.Show("El campo nombre se encuentra vacio");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(txtapellido.Text))
+                {
+                    MessageBox.Show("El campo apellido se encuentra vacio");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(txtnumero.Text))
+                {
+                    MessageBox.Show("El campo numero de documento se encuentra vacio");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(txtemail.Text))
+                {
+                    MessageBox.Show("El campo Email se encuentra vacio");
+                    return;
                 }
 
                 objEstudiante.codigo = txtcodigo.Text;
@@ -106,6 +135,7 @@ namespace PG02_LAB09_MOSQUITO_LUIS
                 mtdListarEstudiante();
 
                 txtcodigo.Text = mtdGenerarCodigo();
+                mtdPermitirBotones(true, false, false, false, true);
                 mTdLimpiarControles();
 
             }
@@ -200,9 +230,7 @@ namespace PG02_LAB09_MOSQUITO_LUIS
             txtnumero.Text = dgvEstudiante.Rows[e.RowIndex].Cells[3].Value.ToString();
             txtemail.Text = dgvEstudiante.Rows[e.RowIndex].Cells[4].Value.ToString();
 
-            btnmodificar.Enabled = true;
-            btneliminar.Enabled = true;
-            btnguardar.Enabled = false;
+            mtdPermitirBotones(false, false, true, true, true);
         }
     }
 }
