@@ -1,6 +1,6 @@
 ﻿namespace PG02_LAB09_MOSQUITO_LUIS
 {
-    partial class Frm_Docentescs
+    partial class Frm_Docentes
     {
         /// <summary>
         /// Required designer variable.

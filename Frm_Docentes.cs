@@ -13,11 +13,11 @@ using System.Windows.Forms;
 
 namespace PG02_LAB09_MOSQUITO_LUIS
 {
-    public partial class Frm_Docentescs : Form
+    public partial class Frm_Docentes : Form
     {
         ArrayList aDocente = new ArrayList();
 
-        public Frm_Docentescs()
+        public Frm_Docentes()
         {
             InitializeComponent();
 
