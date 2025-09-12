@@ -79,12 +79,14 @@
             this.cURSOToolStripMenuItem.Name = "cURSOToolStripMenuItem";
             this.cURSOToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cURSOToolStripMenuItem.Text = "CURSO";
+            this.cURSOToolStripMenuItem.Click += new System.EventHandler(this.cURSOToolStripMenuItem_Click);
             // 
             // nOTASToolStripMenuItem
             // 
             this.nOTASToolStripMenuItem.Name = "nOTASToolStripMenuItem";
             this.nOTASToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.nOTASToolStripMenuItem.Text = "NOTAS";
+            this.nOTASToolStripMenuItem.Click += new System.EventHandler(this.nOTASToolStripMenuItem_Click);
             // 
             // MDIParent1
             // 

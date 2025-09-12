@@ -113,5 +113,17 @@ namespace PG02_LAB09_MOSQUITO_LUIS
             Frm_Docentes docente = new Frm_Docentes();
             docente.Show();
         }
+
+        private void cURSOToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Cursos curso = new Frm_Cursos();
+            curso.Show();
+        }
+
+        private void nOTASToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Notas notas = new Frm_Notas();
+            notas.Show();
+        }
     }
 }
