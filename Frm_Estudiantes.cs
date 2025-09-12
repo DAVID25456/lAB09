@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PG02_LAB09_MOSQUITO_LUIS.Clases;
@@ -17,18 +18,76 @@ namespace PG02_LAB09_MOSQUITO_LUIS
         ArrayList aEstudiante = new ArrayList();
         clsestudiante objEstudiante = new clsestudiante();
 
+        //objEstudiante
+
         public Frm_Estudiantes()
         {
             InitializeComponent();
-            
-            txtnombre.Enabled = false;
-            txtapellido.Enabled = false;
-            txtnumero.Enabled = false;
-            txtemail.Enabled = false;
+
+            EstadoTextBox(false);
 
             btnguardar.Enabled = false;
             btnguardar.Enabled = false;
             btneliminar.Enabled = false;
+        }
+
+        public bool ValidarEmail(string Email)
+        {
+            if (string.IsNullOrEmpty(Email))
+            {
+                return false;
+            }
+
+            return Regex.IsMatch(Email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+        }
+
+        //Verifica si el texto es solo numero
+        //Usar la funcion Regex
+        //@"^[0-9]+$" --> para definir solo numeros
+        private bool SoloNumeros(string texto)
+        {
+            return Regex.IsMatch(texto, @"^[0-9]+$");
+        }
+
+        private void EstadoTextBox(bool a)
+        {
+            txtnombre.Enabled = a;
+            txtapellido.Enabled = a;
+            txtnumero.Enabled = a;
+            txtemail.Enabled = a;
+        }
+
+        private void VerificarCamposVacios()
+        {
+            if (string.IsNullOrEmpty(txtnombre.Text) && string.IsNullOrEmpty(txtapellido.Text) && string.IsNullOrEmpty(txtnumero.Text) && string.IsNullOrEmpty(txtemail.Text))
+            {
+                MessageBox.Show("Todo los campos estan vacios");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtnombre.Text))
+            {
+                MessageBox.Show("El campo nombre se encuentra vacio");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtapellido.Text))
+            {
+                MessageBox.Show("El campo apellido se encuentra vacio");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtnumero.Text))
+            {
+                MessageBox.Show("El campo numero de documento se encuentra vacio");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtemail.Text))
+            {
+                MessageBox.Show("El campo Email se encuentra vacio");
+                return;
+            }
         }
 
         private void mtdPermitirBotones(bool a,bool b, bool c, bool d, bool e)
@@ -94,35 +153,22 @@ namespace PG02_LAB09_MOSQUITO_LUIS
         {
             try
             {
-                if (string.IsNullOrEmpty(txtnombre.Text) && string.IsNullOrEmpty(txtapellido.Text) && string.IsNullOrEmpty(txtnumero.Text) && string.IsNullOrEmpty(txtemail.Text))
+                //No permitir el ingreso de Datos Vacios
+                VerificarCamposVacios();
+
+                if (!SoloNumeros(txtnumero.Text))
                 {
-                    MessageBox.Show("Todo los campos estan vacios");
+                    MessageBox.Show("Solo puede ingresar numeros en el Numero de Documento");
                     return;
                 }
 
-                if (string.IsNullOrEmpty(txtnombre.Text))
+                if (!ValidarEmail(txtemail.Text))
                 {
-                    MessageBox.Show("El campo nombre se encuentra vacio");
+                    MessageBox.Show("Ese no es el dominio");
                     return;
                 }
 
-                if (string.IsNullOrEmpty(txtapellido.Text))
-                {
-                    MessageBox.Show("El campo apellido se encuentra vacio");
-                    return;
-                }
-
-                if (string.IsNullOrEmpty(txtnumero.Text))
-                {
-                    MessageBox.Show("El campo numero de documento se encuentra vacio");
-                    return;
-                }
-
-                if (string.IsNullOrEmpty(txtemail.Text))
-                {
-                    MessageBox.Show("El campo Email se encuentra vacio");
-                    return;
-                }
+                clsestudiante objEstudiante = new clsestudiante();
 
                 objEstudiante.codigo = txtcodigo.Text;
                 objEstudiante.nombre = txtnombre.Text;
@@ -143,12 +189,17 @@ namespace PG02_LAB09_MOSQUITO_LUIS
             {
                 MessageBox.Show("Error! no se registro al estudiante");
             }
+
+            EstadoTextBox(false);
         }
 
         private void btnmodificar_Click(object sender, EventArgs e)
         {
+            EstadoTextBox(true);
+            
             try
             {
+                VerificarCamposVacios();
                 foreach (clsestudiante estudiante in aEstudiante)
                 {
                     if (estudiante.codigo == txtcodigo.Text)
@@ -156,7 +207,23 @@ namespace PG02_LAB09_MOSQUITO_LUIS
                         estudiante.nombre = txtnombre.Text;
                         estudiante.apellido = txtapellido.Text;
                         estudiante.numerodocumento = txtnumero.Text;
-                        estudiante.email = txtemail.Text;
+
+                        bool band = true;
+
+                        do
+                        {
+                            if (ValidarEmail(txtemail.Text))
+                            {
+                                estudiante.email = txtemail.Text;
+                                band = false;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Ese no es el dominio");
+                                return;
+                            }
+                        }
+                        while (band);
 
                         break;
                     }
@@ -172,8 +239,8 @@ namespace PG02_LAB09_MOSQUITO_LUIS
             mtdListarEstudiante();
             mTdLimpiarControles();
 
-            btnmodificar.Enabled = false;
-            btneliminar.Enabled = false;
+            EstadoTextBox(false);
+            mtdPermitirBotones(true, false, false, false, true);
         }
 
         private void btneliminar_Click(object sender, EventArgs e)
@@ -222,6 +289,8 @@ namespace PG02_LAB09_MOSQUITO_LUIS
 
         private void dgvEstudiante_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            EstadoTextBox(true);
+            
             dgvEstudiante.Rows[e.RowIndex].Cells[0].Value.ToString();
 
             txtcodigo.Text = dgvEstudiante.Rows[e.RowIndex].Cells[0].Value.ToString();
