@@ -61,6 +61,7 @@
             this.btnsalir.TabIndex = 50;
             this.btnsalir.Text = "Salir";
             this.btnsalir.UseVisualStyleBackColor = true;
+            this.btnsalir.Click += new System.EventHandler(this.btnsalir_Click);
             // 
             // dgvEstudiante
             // 
@@ -78,6 +79,7 @@
             this.dgvEstudiante.ReadOnly = true;
             this.dgvEstudiante.Size = new System.Drawing.Size(544, 150);
             this.dgvEstudiante.TabIndex = 49;
+            this.dgvEstudiante.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEstudiante_CellContentDoubleClick);
             // 
             // colcodigo
             // 
@@ -117,6 +119,7 @@
             this.btneliminar.TabIndex = 48;
             this.btneliminar.Text = "Eliminar";
             this.btneliminar.UseVisualStyleBackColor = true;
+            this.btneliminar.Click += new System.EventHandler(this.btneliminar_Click);
             // 
             // btnmodificar
             // 
@@ -126,6 +129,7 @@
             this.btnmodificar.TabIndex = 47;
             this.btnmodificar.Text = "Modificar";
             this.btnmodificar.UseVisualStyleBackColor = true;
+            this.btnmodificar.Click += new System.EventHandler(this.btnmodificar_Click);
             // 
             // btnguardar
             // 
@@ -135,6 +139,7 @@
             this.btnguardar.TabIndex = 46;
             this.btnguardar.Text = "Guardar";
             this.btnguardar.UseVisualStyleBackColor = true;
+            this.btnguardar.Click += new System.EventHandler(this.btnguardar_Click);
             // 
             // btnnuevo
             // 
@@ -144,6 +149,7 @@
             this.btnnuevo.TabIndex = 45;
             this.btnnuevo.Text = "Nuevo";
             this.btnnuevo.UseVisualStyleBackColor = true;
+            this.btnnuevo.Click += new System.EventHandler(this.btnnuevo_Click);
             // 
             // txtemail
             // 
@@ -260,6 +266,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Frm_Docentescs";
             this.Text = "Frm_Docentescs";
+            this.Load += new System.EventHandler(this.Frm_Docentescs_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstudiante)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

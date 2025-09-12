@@ -33,6 +33,9 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.estudiantesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eSTUDIANTESToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.dOCENTEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cURSOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nOTASToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,7 +52,10 @@
             // estudiantesToolStripMenuItem
             // 
             this.estudiantesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.eSTUDIANTESToolStripMenuItem1});
+            this.eSTUDIANTESToolStripMenuItem1,
+            this.dOCENTEToolStripMenuItem,
+            this.cURSOToolStripMenuItem,
+            this.nOTASToolStripMenuItem});
             this.estudiantesToolStripMenuItem.Name = "estudiantesToolStripMenuItem";
             this.estudiantesToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
             this.estudiantesToolStripMenuItem.Text = "EJERCICIOS";
@@ -60,6 +66,25 @@
             this.eSTUDIANTESToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.eSTUDIANTESToolStripMenuItem1.Text = "ESTUDIANTES";
             this.eSTUDIANTESToolStripMenuItem1.Click += new System.EventHandler(this.eSTUDIANTESToolStripMenuItem1_Click);
+            // 
+            // dOCENTEToolStripMenuItem
+            // 
+            this.dOCENTEToolStripMenuItem.Name = "dOCENTEToolStripMenuItem";
+            this.dOCENTEToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dOCENTEToolStripMenuItem.Text = "DOCENTE";
+            this.dOCENTEToolStripMenuItem.Click += new System.EventHandler(this.dOCENTEToolStripMenuItem_Click);
+            // 
+            // cURSOToolStripMenuItem
+            // 
+            this.cURSOToolStripMenuItem.Name = "cURSOToolStripMenuItem";
+            this.cURSOToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cURSOToolStripMenuItem.Text = "CURSO";
+            // 
+            // nOTASToolStripMenuItem
+            // 
+            this.nOTASToolStripMenuItem.Name = "nOTASToolStripMenuItem";
+            this.nOTASToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nOTASToolStripMenuItem.Text = "NOTAS";
             // 
             // MDIParent1
             // 
@@ -82,6 +107,9 @@
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem estudiantesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eSTUDIANTESToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem dOCENTEToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cURSOToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nOTASToolStripMenuItem;
     }
 }
 

@@ -16,9 +16,7 @@ namespace PG02_LAB09_MOSQUITO_LUIS
     public partial class Frm_Estudiantes : Form
     {
         ArrayList aEstudiante = new ArrayList();
-        clsestudiante objEstudiante = new clsestudiante();
-
-        //objEstudiante
+        //clsPersona ObjPersona = new clsPersona();
 
         public Frm_Estudiantes()
         {
@@ -116,7 +114,7 @@ namespace PG02_LAB09_MOSQUITO_LUIS
             }
             else
             {
-                foreach (clsestudiante i in aEstudiante)
+                foreach (clsPersona i in aEstudiante)
                 {
                     codigo = i.codigo.ToString();
                 }
@@ -127,7 +125,7 @@ namespace PG02_LAB09_MOSQUITO_LUIS
         private void mtdListarEstudiante()
         {
             dgvEstudiante.Rows.Clear();
-            foreach (clsestudiante e in aEstudiante)
+            foreach (clsPersona e in aEstudiante)
             {
                 dgvEstudiante.Rows.Add(e.codigo, e.nombre, e.apellido, e.numerodocumento, e.email);
             }
@@ -168,15 +166,15 @@ namespace PG02_LAB09_MOSQUITO_LUIS
                     return;
                 }
 
-                clsestudiante objEstudiante = new clsestudiante();
+                clsPersona ObjPersona = new clsPersona();
 
-                objEstudiante.codigo = txtcodigo.Text;
-                objEstudiante.nombre = txtnombre.Text;
-                objEstudiante.email = txtemail.Text;
-                objEstudiante.apellido = txtapellido.Text;
-                objEstudiante.numerodocumento = txtnumero.Text;
+                ObjPersona.codigo = txtcodigo.Text;
+                ObjPersona.nombre = txtnombre.Text;
+                ObjPersona.email = txtemail.Text;
+                ObjPersona.apellido = txtapellido.Text;
+                ObjPersona.numerodocumento = txtnumero.Text;
 
-                aEstudiante.Add(objEstudiante);
+                aEstudiante.Add(ObjPersona);
 
                 mtdListarEstudiante();
 
@@ -200,7 +198,7 @@ namespace PG02_LAB09_MOSQUITO_LUIS
             try
             {
                 VerificarCamposVacios();
-                foreach (clsestudiante estudiante in aEstudiante)
+                foreach (clsPersona estudiante in aEstudiante)
                 {
                     if (estudiante.codigo == txtcodigo.Text)
                     {
@@ -247,7 +245,7 @@ namespace PG02_LAB09_MOSQUITO_LUIS
         {
             try
             {
-                foreach (clsestudiante estudiante in aEstudiante)
+                foreach (clsPersona estudiante in aEstudiante)
                 {
                     if (estudiante.codigo == txtcodigo.Text)
                     {
@@ -284,8 +282,6 @@ namespace PG02_LAB09_MOSQUITO_LUIS
                 mTdLimpiarControles();
             }
         }
-
-        
 
         private void dgvEstudiante_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
