@@ -166,6 +166,24 @@ namespace PG02_LAB09_MOSQUITO_LUIS
                     return;
                 }
 
+                foreach (DataGridViewRow row in dgvEstudiante.Rows)
+                {
+                    if (row.IsNewRow) continue;
+
+                    string codigo = row.Cells[0].Value?.ToString();
+                    string nombre = row.Cells[1].Value?.ToString();
+                    string apellido = row.Cells[2].Value?.ToString();
+                    string numero = row.Cells[3].Value?.ToString();
+                    string email = row.Cells[4].Value?.ToString();
+
+                    if (codigo == txtcodigo.Text ||
+                        (nombre == txtnombre.Text && apellido == txtapellido.Text) || numero == txtnumero.Text || email == txtemail.Text)
+                    {
+                        MessageBox.Show("⚠ El estudiante ya existe (mismo código o mismo nombre y apellido).");
+                        return;
+                    }
+                }
+
                 clsPersona ObjPersona = new clsPersona();
 
                 ObjPersona.codigo = txtcodigo.Text;

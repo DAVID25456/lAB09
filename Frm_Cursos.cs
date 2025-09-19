@@ -145,39 +145,47 @@ namespace PG02_LAB09_MOSQUITO_LUIS
 
         private void btnguardar_Click(object sender, EventArgs e)
         {
-            try
+            VerificarCamposVacios();
+
+            if (!mtd_solo_numeros(txtCreditos.Text)) return;
+            if (!mtd_solo_numeros(txt_Horas_Practicas.Text)) return;
+            if (!mtd_solo_numeros(txt_Horas_Teoricas.Text)) return;
+
+            foreach (DataGridViewRow row in dgvCurso.Rows)
             {
-                //No permitir el ingreso de Datos Vacios
-                VerificarCamposVacios();
+                if (row.IsNewRow) continue;
 
-                if (!mtd_solo_numeros(txtCreditos.Text)) return;
-                if (!mtd_solo_numeros(txt_Horas_Practicas.Text)) return;
-                if (!mtd_solo_numeros(txt_Horas_Teoricas.Text)) return;
+                string codigo = row.Cells[0].Value?.ToString();
+                string curso = row.Cells[1].Value?.ToString();
+                string creditos = row.Cells[2].Value?.ToString();
+                string practicas = row.Cells[3].Value?.ToString();
+                string teoricas = row.Cells[4].Value?.ToString();
 
-                clsCurso ObjCurso = new clsCurso
+                if (codigo == txtcodigo.Text || curso == txtCurso.Text || creditos  == txtCreditos.Text || practicas == txt_Horas_Practicas.Text || teoricas == txt_Horas_Teoricas.Text)
                 {
-                    codigo = txtcodigo.Text,
-                    curso = txtCurso.Text,
-                    creditos = txtCreditos.Text,
-                    horas_practicas = txt_Horas_Practicas.Text,
-                    horas_teoricas = txt_Horas_Teoricas.Text
-                };
-
-
-                aCurso.Add(ObjCurso);
-
-                mtdListarEstudiante();
-
-                txtcodigo.Text = mtdGenerarCodigo();
-                mtdPermitirBotones(true, false, false, false, true);
-                mTdLimpiarControles();
-                EstadoTextBox(false);
-
+                    MessageBox.Show("⚠ El estudiante ya existe (mismo código o mismo nombre y apellido).");
+                    return;
+                }
             }
-            catch (Exception)
+
+            clsCurso ObjCurso = new clsCurso
             {
-                MessageBox.Show("Error! no se registro al curso");
-            }
+                codigo = txtcodigo.Text,
+                curso = txtCurso.Text,
+                creditos = txtCreditos.Text,
+                horas_practicas = txt_Horas_Practicas.Text,
+                horas_teoricas = txt_Horas_Teoricas.Text
+            };
+
+
+            aCurso.Add(ObjCurso);
+
+            mtdListarEstudiante();
+
+            txtcodigo.Text = mtdGenerarCodigo();
+            mtdPermitirBotones(true, false, false, false, true);
+            mTdLimpiarControles();
+            EstadoTextBox(false);
         }
 
         private void btnmodificar_Click(object sender, EventArgs e)

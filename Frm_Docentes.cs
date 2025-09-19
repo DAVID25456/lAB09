@@ -123,10 +123,10 @@ namespace PG02_LAB09_MOSQUITO_LUIS
 
         private void mtdListarEstudiante()
         {
-            dgvEstudiante.Rows.Clear();
+            dgvDocentes.Rows.Clear();
             foreach (clsPersona e in aDocente)
             {
-                dgvEstudiante.Rows.Add(e.codigo, e.nombre, e.apellido, e.numerodocumento, e.email);
+                dgvDocentes.Rows.Add(e.codigo, e.nombre, e.apellido, e.numerodocumento, e.email);
             }
         }
 
@@ -163,6 +163,24 @@ namespace PG02_LAB09_MOSQUITO_LUIS
                 {
                     MessageBox.Show("Ese no es el dominio");
                     return;
+                }
+
+                foreach (DataGridViewRow row in dgvDocentes.Rows)
+                {
+                    if (row.IsNewRow) continue;
+
+                    string codigo = row.Cells[0].Value?.ToString();
+                    string nombre = row.Cells[1].Value?.ToString();
+                    string apellido = row.Cells[2].Value?.ToString();
+                    string numero = row.Cells[3].Value?.ToString();
+                    string email = row.Cells[4].Value?.ToString();
+
+                    if (codigo == txtcodigo.Text ||
+                        (nombre == txtnombre.Text && apellido == txtapellido.Text) || numero == txtnumero.Text || email == txtemail.Text)
+                    {
+                        MessageBox.Show("⚠ El estudiante ya existe (mismo código o mismo nombre y apellido).");
+                        return;
+                    }
                 }
 
                 clsPersona ObjPersona = new clsPersona();
@@ -286,13 +304,13 @@ namespace PG02_LAB09_MOSQUITO_LUIS
         {
             EstadoTextBox(true);
 
-            dgvEstudiante.Rows[e.RowIndex].Cells[0].Value.ToString();
+            dgvDocentes.Rows[e.RowIndex].Cells[0].Value.ToString();
 
-            txtcodigo.Text = dgvEstudiante.Rows[e.RowIndex].Cells[0].Value.ToString();
-            txtnombre.Text = dgvEstudiante.Rows[e.RowIndex].Cells[1].Value.ToString();
-            txtapellido.Text = dgvEstudiante.Rows[e.RowIndex].Cells[2].Value.ToString();
-            txtnumero.Text = dgvEstudiante.Rows[e.RowIndex].Cells[3].Value.ToString();
-            txtemail.Text = dgvEstudiante.Rows[e.RowIndex].Cells[4].Value.ToString();
+            txtcodigo.Text = dgvDocentes.Rows[e.RowIndex].Cells[0].Value.ToString();
+            txtnombre.Text = dgvDocentes.Rows[e.RowIndex].Cells[1].Value.ToString();
+            txtapellido.Text = dgvDocentes.Rows[e.RowIndex].Cells[2].Value.ToString();
+            txtnumero.Text = dgvDocentes.Rows[e.RowIndex].Cells[3].Value.ToString();
+            txtemail.Text = dgvDocentes.Rows[e.RowIndex].Cells[4].Value.ToString();
 
             mtdPermitirBotones(false, false, true, true, true);
         }

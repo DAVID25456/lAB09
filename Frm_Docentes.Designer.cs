@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.btnsalir = new System.Windows.Forms.Button();
-            this.dgvEstudiante = new System.Windows.Forms.DataGridView();
+            this.dgvDocentes = new System.Windows.Forms.DataGridView();
             this.colcodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colnombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colapellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,7 +50,7 @@
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblCodigo = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEstudiante)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDocentes)).BeginInit();
             this.SuspendLayout();
             // 
             // btnsalir
@@ -63,23 +63,23 @@
             this.btnsalir.UseVisualStyleBackColor = true;
             this.btnsalir.Click += new System.EventHandler(this.btnsalir_Click);
             // 
-            // dgvEstudiante
+            // dgvDocentes
             // 
-            this.dgvEstudiante.AllowUserToAddRows = false;
-            this.dgvEstudiante.AllowUserToDeleteRows = false;
-            this.dgvEstudiante.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEstudiante.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvDocentes.AllowUserToAddRows = false;
+            this.dgvDocentes.AllowUserToDeleteRows = false;
+            this.dgvDocentes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDocentes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colcodigo,
             this.colnombre,
             this.colapellido,
             this.coldocumento,
             this.colemail});
-            this.dgvEstudiante.Location = new System.Drawing.Point(22, 233);
-            this.dgvEstudiante.Name = "dgvEstudiante";
-            this.dgvEstudiante.ReadOnly = true;
-            this.dgvEstudiante.Size = new System.Drawing.Size(544, 150);
-            this.dgvEstudiante.TabIndex = 49;
-            this.dgvEstudiante.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEstudiante_CellContentDoubleClick);
+            this.dgvDocentes.Location = new System.Drawing.Point(22, 233);
+            this.dgvDocentes.Name = "dgvDocentes";
+            this.dgvDocentes.ReadOnly = true;
+            this.dgvDocentes.Size = new System.Drawing.Size(544, 150);
+            this.dgvDocentes.TabIndex = 49;
+            this.dgvDocentes.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEstudiante_CellContentDoubleClick);
             // 
             // colcodigo
             // 
@@ -238,9 +238,9 @@
             this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.Location = new System.Drawing.Point(126, 9);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(330, 25);
+            this.lblTitulo.Size = new System.Drawing.Size(305, 25);
             this.lblTitulo.TabIndex = 34;
-            this.lblTitulo.Text = "Mantenimiento de Estudiantes";
+            this.lblTitulo.Text = "Mantenimiento de Docentes";
             // 
             // Frm_Docentes
             // 
@@ -248,7 +248,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(595, 397);
             this.Controls.Add(this.btnsalir);
-            this.Controls.Add(this.dgvEstudiante);
+            this.Controls.Add(this.dgvDocentes);
             this.Controls.Add(this.btneliminar);
             this.Controls.Add(this.btnmodificar);
             this.Controls.Add(this.btnguardar);
@@ -267,7 +267,7 @@
             this.Name = "Frm_Docentes";
             this.Text = "Frm_Docentescs";
             this.Load += new System.EventHandler(this.Frm_Docentescs_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEstudiante)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDocentes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -276,7 +276,7 @@
         #endregion
 
         private System.Windows.Forms.Button btnsalir;
-        private System.Windows.Forms.DataGridView dgvEstudiante;
+        private System.Windows.Forms.DataGridView dgvDocentes;
         private System.Windows.Forms.DataGridViewTextBoxColumn colcodigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colnombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn colapellido;
