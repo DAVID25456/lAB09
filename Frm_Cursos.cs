@@ -100,7 +100,7 @@ namespace PG02_LAB09_MOSQUITO_LUIS
             }
             else
             {
-                foreach (clsPersona i in aCurso)
+                foreach (clsCurso i in aCurso)
                 {
                     codigo = i.codigo.ToString();
                 }
